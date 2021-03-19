@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Simulator</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <canvas id="canv"></canvas>
+    <!-- Using DatGUI https://github.com/dataarts/dat.gui -->
+    <script src="../vendor/datgui.min.js"></script>
+
+    <!-- I miss RequireJS...
+        I could probably use ESModules, however, this is a rapid prototype project-->
+    <script src="components/Configuration.js"></script>
+    <script src="components/utils.js"></script>
+    <script src="components/Walker.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
