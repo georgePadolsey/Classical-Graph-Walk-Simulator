@@ -81,21 +81,18 @@ function render(t) {
     }
   }
 
-  // console.log(t);
-
   walkers.map((w) => {
     w.update();
     w.render();
   });
 
   if (Configuration.getConfig().squishMode) {
-    // console.log("run",);
     squashGraph = Math.min(1, squashGraph + 0.05);
   } else {
     squashGraph = Math.max(0, squashGraph - 0.05);
   }
-  // console.log(squashGraph);
 
+  // if fully squashed
   if (squashGraph >= 1) {
     var colCounter = {};
     walkers.forEach((w) => {
@@ -135,29 +132,6 @@ function setCanvasSize() {
 }
 
 window.addEventListener("resize", setCanvasSize);
-
-function getVertexCoords(colI, vertexI) {
-  const {
-    colLeftMargin,
-    colWidth,
-    topMargin,
-    colAmount,
-    bottomMargin,
-  } = Configuration.getConfig();
-
-  const vertices =
-    colI < Math.floor(colAmount / 2)
-      ? Math.pow(2, colI)
-      : Math.pow(2, colAmount - colI - 1);
-
-  const heightPerVertex = (canvas.height - topMargin - bottomMargin) / vertices;
-
-  // centerX, centerY
-  return [
-    colLeftMargin + colWidth * colI + colWidth * 0.5,
-    topMargin + heightPerVertex * vertexI + 0.5 * heightPerVertex,
-  ];
-}
 
 function start() {
   requestAnimationFrame(render);
